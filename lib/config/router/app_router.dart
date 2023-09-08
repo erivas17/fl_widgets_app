@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:widgets_app/presentation/screens/animated/animated_screen.dart';
 import 'package:widgets_app/presentation/screens/buttons/buttons_screen.dart';
 import 'package:widgets_app/presentation/screens/buttons/cards/cards_screen.dart';
 import 'package:widgets_app/presentation/screens/home/home_screen.dart';
@@ -37,6 +38,12 @@ final GoRouter appRouter = GoRouter(
       path: '/snackbars',
       builder: (context, GoRouterState state) {
         return const SnackbarScreen();
+      },
+    ),
+    GoRoute(
+      path: '/animated',
+      builder: (context, GoRouterState state) {
+        return const AnimatedScreen();
       },
     ),
   ],
