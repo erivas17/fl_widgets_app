@@ -4,6 +4,7 @@ import 'package:widgets_app/presentation/screens/buttons/buttons_screen.dart';
 import 'package:widgets_app/presentation/screens/buttons/cards/cards_screen.dart';
 import 'package:widgets_app/presentation/screens/home/home_screen.dart';
 import 'package:widgets_app/presentation/screens/progress/progress_screen.dart';
+import 'package:widgets_app/presentation/screens/ui_controls/ui_controls_screen.dart';
 
 import '../../presentation/screens/snackbar/snackbar_screen.dart';
 
@@ -44,6 +45,12 @@ final GoRouter appRouter = GoRouter(
       path: '/animated',
       builder: (context, GoRouterState state) {
         return const AnimatedScreen();
+      },
+    ),
+    GoRoute(
+      path: '/ui-controls',
+      builder: (context, GoRouterState state) {
+        return const UiControlsScreen();
       },
     ),
   ],
