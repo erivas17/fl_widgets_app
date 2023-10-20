@@ -7,14 +7,22 @@ class ThemeChangerScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final isDarkValue = ref.watch(isDarkProvider);
+    //Con StateProvider
+    //final isDarkValue = ref.watch(isDarkProvider);
+
+    //Con StateNotifierProvider
+    final isDarkValue = ref.watch(themeNotifierProvider).isDarkMode;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Theme changer'),
         actions: [
           IconButton(
             onPressed: (() {
-              ref.read(isDarkProvider.notifier).update((state) => !state);
+              //Con StateProvider
+              //ref.read(isDarkProvider.notifier).update((state) => !state);
+
+              //Con StateNotifierProvider
+              ref.read(themeNotifierProvider.notifier).toggleDarkMode();
             }),
             icon: Icon(isDarkValue
                 ? Icons.dark_mode_outlined
@@ -33,6 +41,13 @@ class _ThemeChangerView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final List<Color> colors = ref.watch(colorListProvider);
+
+    //Con StateProvider
+    //final selectedColor = ref.watch(selectColorProvider);
+
+    //Con StateNotifierProvider
+    final selectedColor = ref.watch(themeNotifierProvider).selectedColor;
+
     return ListView.builder(
       itemCount: colors.length,
       itemBuilder: (context, index) {
@@ -45,9 +60,13 @@ class _ThemeChangerView extends ConsumerWidget {
             subtitle: Text('${color.value}'),
             activeColor: color,
             value: index,
-            groupValue: ref.watch(selectColorProvider),
+            groupValue: selectedColor,
             onChanged: (value) {
-              ref.read(selectColorProvider.notifier).update((state) => index);
+              //Con StateProvider
+              //ref.read(selectColorProvider.notifier).update((state) => index);
+
+              //Con StateNotifierProvider
+              ref.read(themeNotifierProvider.notifier).changeColorIndex(index);
             });
       },
     );
